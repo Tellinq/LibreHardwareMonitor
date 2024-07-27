@@ -3440,6 +3440,168 @@ internal sealed class SuperIOHardware : Hardware
 
                         break;
 
+                    case Model.PRIME_Z690_P: //NCT6798D
+                        v.Add(new Voltage("Vcore", 0));
+                        v.Add(new Voltage("+5V", 1, 4, 1));
+                        v.Add(new Voltage("AVSB", 2, 34, 34));
+                        v.Add(new Voltage("+3.3V", 3, 34, 34));
+                        v.Add(new Voltage("+12V", 4, 11, 1));
+                        v.Add(new Voltage("IVR Atom L2 Cluster #1", 5));
+                        v.Add(new Voltage("Voltage #7", 6));
+                        v.Add(new Voltage("+3V Standby", 7, 34, 34));
+                        v.Add(new Voltage("CMOS Battery", 8, 34, 34));
+                        v.Add(new Voltage("CPU Voltage Termination", 9, 1, 1));
+                        v.Add(new Voltage("DRAM", 10, 33.2f, 34));
+                        v.Add(new Voltage("IVR Atom L2 Cluster #0", 11, 1, 1));
+                        v.Add(new Voltage("Chipset 1.05V", 12));
+                        v.Add(new Voltage("CPU System Agent", 13, 1, 1));
+                        v.Add(new Voltage("CPU Input Auxilary", 14, 1, 1));
+
+                        t.Add(new Temperature("CPU Core", 0));
+                        t.Add(new Temperature("Motherboard", 1));
+                        t.Add(new Temperature("VRM", 2));
+                        // t.Add(new Temperature("Chipset (Potential)", 12));
+                        // t.Add(new Temperature("CPU Package (Potential)", 21));
+
+                        for (int i = 3; i < 7; i++)
+                        {
+                            t.Add(new Temperature("Auxilary #" + i, i));
+                        }
+
+                        for (int i = 7; i < 50; i++)
+                        {
+                            switch (i)
+                            {
+
+                                case 12:
+                                    t.Add(new Temperature("Chipset (Potential)", 12));
+                                    break;
+                                case 21:
+                                    t.Add(new Temperature("CPU Package (Potential)", 21));
+                                    break;
+                                default:
+                                    t.Add(new Temperature("Potential Temperature #" + i, i));
+                                    break;
+
+
+                            }
+                        }
+
+                        fanControlNames = new[] { "Chassis Fan #1", "CPU Fan", "CPU Optional Fan", "Chassis Fan #2", "Chassis Fan #3", "AIO Pump" };
+
+                        for (int i = 0; i < fanControlNames.Length; i++)
+                            f.Add(new Fan(fanControlNames[i], i));
+
+                        for (int i = 0; i < fanControlNames.Length; i++) {
+                            switch (i)
+                            {
+                                case 2:
+                                    break;
+                                default:
+                                    c.Add(new Control(fanControlNames[i], i));
+                                    break;
+                            }
+                        }
+
+                        break;
+
+                    case Model.TUF_GAMING_Z690_PLUS_WIFI: //NCT6798D
+                        v.Add(new Voltage("Vcore", 0));
+                        v.Add(new Voltage("+5V", 1, 4, 1));
+                        v.Add(new Voltage("AVSB", 2, 34, 34));
+                        v.Add(new Voltage("+3.3V", 3, 34, 34));
+                        v.Add(new Voltage("+12V", 4, 11, 1));
+                        v.Add(new Voltage("IVR Atom L2 Cluster #1", 5));
+                        v.Add(new Voltage("Voltage #7", 6));
+                        v.Add(new Voltage("+3V Standby", 7, 34, 34));
+                        v.Add(new Voltage("CMOS Battery", 8, 34, 34));
+                        v.Add(new Voltage("CPU Voltage Termination", 9, 1, 1));
+                        v.Add(new Voltage("DRAM", 10, 1, 1));
+                        v.Add(new Voltage("IVR Atom L2 Cluster #0", 11, 1, 1));
+                        v.Add(new Voltage("Chipset 1.05V", 12));
+                        v.Add(new Voltage("CPU System Agent", 13, 1, 1));
+                        v.Add(new Voltage("CPU Input Auxilary", 14, 1, 1));
+
+                        t.Add(new Temperature("CPU Core", 0));
+                        t.Add(new Temperature("Motherboard", 1));
+                        t.Add(new Temperature("VRM", 2));
+                        // t.Add(new Temperature("Chipset (Potential)", 12));
+                        // t.Add(new Temperature("CPU Package (Potential)", 21));
+
+                        for (int i = 3; i < 7; i++)
+                        {
+                            t.Add(new Temperature("Auxilary #" + i, i));
+                        }
+
+                        for (int i = 7; i < 50; i++)
+                        {
+                            switch (i)
+                            {
+
+                                case 12:
+                                    t.Add(new Temperature("Chipset (Potential)", 12));
+                                    break;
+                                case 21:
+                                    t.Add(new Temperature("CPU Package (Potential)", 21));
+                                    break;
+                                default:
+                                    t.Add(new Temperature("Potential Temperature #" + i, i));
+                                    break;
+
+
+                            }
+                        }
+
+                        fanControlNames = new[] { "Chassis Fan #1", "CPU Fan", "CPU Optional Fan", "Chassis Fan #2", "Chassis Fan #3", "Chassis Fan #4", "AIO Pump" };
+
+                        for (int i = 0; i < fanControlNames.Length; i++)
+                            f.Add(new Fan(fanControlNames[i], i));
+
+                        for (int i = 0; i < fanControlNames.Length; i++) {
+                            switch (i)
+                            {
+                                case 2:
+                                    break;
+                                default:
+                                    c.Add(new Control(fanControlNames[i], i));
+                                    break;
+                            }
+                        }
+
+                        break;
+
+                    case Model.ROG_STRIX_Z790_A_GAMING_WIFI: //NCT6798D
+                        v.Add(new Voltage("Vcore", 0));
+                        v.Add(new Voltage("+5V", 1, 4, 1));
+                        v.Add(new Voltage("AVSB", 2, 34, 34));
+                        v.Add(new Voltage("+3.3V", 3, 34, 34));
+                        v.Add(new Voltage("+12V", 4, 11, 1));
+                        v.Add(new Voltage("IVR Atom L2 Cluster #1", 5));
+                        v.Add(new Voltage("Voltage #7", 6));
+                        v.Add(new Voltage("+3V Standby", 7, 34, 34));
+                        v.Add(new Voltage("CMOS Battery", 8, 34, 34));
+                        v.Add(new Voltage("CPU Voltage Termination", 9, 1, 1));
+                        v.Add(new Voltage("DRAM", 10, 5, 4.097f));
+                        v.Add(new Voltage("IVR Atom L2 Cluster #0", 11, 1, 1));
+                        v.Add(new Voltage("Chipset 1.05V", 12));
+                        v.Add(new Voltage("CPU System Agent", 13, 1, 1));
+                        v.Add(new Voltage("CPU Input Auxilary", 14, 1, 1));
+
+                        t.Add(new Temperature("CPU Package", 0));
+                        t.Add(new Temperature("Motherboard", 2));
+                        t.Add(new Temperature("Chipset", 13));
+                        t.Add(new Temperature("CPU Core", 22));
+
+                        fanControlNames = new[] { "Chassis Fan #1", "CPU Fan", "Chassis Fan #2", "Chassis Fan #3", "Chassis Fan #4", "Chassis Fan #5", "AIO Pump" };
+
+                        for (int i = 0; i < fanControlNames.Length; i++)
+                            f.Add(new Fan(fanControlNames[i], i));
+
+                        for (int i = 0; i < fanControlNames.Length; i++)
+                            c.Add(new Control(fanControlNames[i], i));
+
+                        break;
+
                     case Model.ROG_MAXIMUS_Z790_HERO: //NCT6798D
                         t.Add(new Temperature("CPU Package", 0));
                         t.Add(new Temperature("VRM", 1));
