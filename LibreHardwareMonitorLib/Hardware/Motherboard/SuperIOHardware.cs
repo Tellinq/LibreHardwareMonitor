@@ -3181,51 +3181,22 @@ internal sealed class SuperIOHardware : Hardware
                         v.Add(new Voltage("CPU System Agent", 13, 1, 1));
                         v.Add(new Voltage("CPU Input Auxilary", 14, 1, 1));
 
-                        t.Add(new Temperature("CPU Core", 0));
-                        t.Add(new Temperature("Motherboard", 1));
-                        t.Add(new Temperature("VRM", 2));
-                        // t.Add(new Temperature("Chipset (Potential)", 12));
-                        // t.Add(new Temperature("CPU Package (Potential)", 21));
+                        t.Add(new Temperature("CPU Core", 22));
+                        t.Add(new Temperature("CPU Package", 1));
+                        t.Add(new Temperature("Motherboard", 2));
+                        t.Add(new Temperature("VRM", 3));
 
-                        for (int i = 3; i < 7; i++)
-                        {
-                            t.Add(new Temperature("Auxilary #" + i, i));
-                        }
-
-                        for (int i = 7; i < 50; i++)
-                        {
-                            switch (i)
-                            {
-
-                                case 12:
-                                    t.Add(new Temperature("Chipset (Potential)", 12));
-                                    break;
-                                case 21:
-                                    t.Add(new Temperature("CPU Package (Potential)", 21));
-                                    break;
-                                default:
-                                    t.Add(new Temperature("Potential Temperature #" + i, i));
-                                    break;
-
-
-                            }
-                        }
-
+                        // CPU Optional Fan will show the active fan RPM, but cannot be controlled. As a control, this value remains at 60%.
                         fanControlNames = new[] { "Chassis Fan #1", "CPU Fan", "CPU Optional Fan", "Chassis Fan #2", "Chassis Fan #3", "Chassis Fan #4", "AIO Pump" };
 
-                        for (int i = 0; i < fanControlNames.Length; i++)
-                            f.Add(new Fan(fanControlNames[i], i));
+                        // Reordered for programs that sort via the added sources instead of sorting by index
+                        int[] newOrder = { 1, 2, 0, 3, 4, 5, 6 };
 
-                        for (int i = 0; i < fanControlNames.Length; i++) {
-                            switch (i)
-                            {
-                                case 2:
-                                    break;
-                                default:
-                                    c.Add(new Control(fanControlNames[i], i));
-                                    break;
-                            }
-                        }
+                        foreach (int originalIndex in newOrder)
+                            f.Add(new Fan(fanControlNames[originalIndex], originalIndex));
+
+                        foreach (int originalIndex in newOrder.Where(i => i != 2))
+                            c.Add(new Control(fanControlNames[originalIndex], originalIndex));
 
                         break;
 
