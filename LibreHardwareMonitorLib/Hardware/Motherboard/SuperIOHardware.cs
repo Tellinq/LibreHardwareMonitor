@@ -3195,8 +3195,11 @@ internal sealed class SuperIOHardware : Hardware
                         foreach (int originalIndex in newOrder)
                             f.Add(new Fan(fanControlNames[originalIndex], originalIndex));
 
-                        foreach (int originalIndex in newOrder.Where(i => i != 2))
-                            c.Add(new Control(fanControlNames[originalIndex], originalIndex));
+                        foreach (int originalIndex in newOrder)
+                        {
+                            if (originalIndex != 2)
+                                c.Add(new Control(fanControlNames[originalIndex], originalIndex));
+                        }
 
                         break;
 
