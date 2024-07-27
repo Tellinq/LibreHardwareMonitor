@@ -523,6 +523,8 @@ internal class Identification
                 return Model.X670E_Valkyrie;
             case var _ when name.Equals("ROG MAXIMUS Z790 HERO", StringComparison.OrdinalIgnoreCase):
                 return Model.ROG_MAXIMUS_Z790_HERO;
+            case var _ when name.Equals("TUF GAMING Z690-PLUS WIFI", StringComparison.OrdinalIgnoreCase):
+                return Model.TUF_GAMING_Z690_PLUS_WIFI;
             case var _ when name.Equals("PRIME Z690-A", StringComparison.OrdinalIgnoreCase):
                 return Model.PRIME_Z690_A;
             case var _ when name.Equals("Z690 Steel Legend WiFi 6E", StringComparison.OrdinalIgnoreCase):
