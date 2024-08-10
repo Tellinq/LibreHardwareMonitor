@@ -133,6 +133,8 @@ internal class Identification
                 return Model.Fatal1ty_AB350_Gaming_K4;
             case var _ when name.Equals("IMB-1213", StringComparison.OrdinalIgnoreCase):
                 return Model.IMB_1213;
+            case var _ when name.Equals("IMB-1215", StringComparison.OrdinalIgnoreCase):
+                return Model.IMB_1215;
             case var _ when name.Equals("IMB-1222", StringComparison.OrdinalIgnoreCase):
                 return Model.IMB_1222;
             case var _ when name.Equals("AB350M-HDV", StringComparison.OrdinalIgnoreCase):
