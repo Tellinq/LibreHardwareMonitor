@@ -337,7 +337,6 @@ internal sealed class SuperIOHardware : Hardware
                                 v.Add(new Voltage("CPU Voltage Termination", 8));
                                 t.Add(new Temperature("Motherboard", 1));
                                 t.Add(new Temperature("CPU Core", 2));
-                                t.Add(new Temperature("CPU Core (PECI)", 3));
                                 f.Add(new Fan("Chassis Fan", 0));
                                 f.Add(new Fan("CPU Fan", 1));
                                 c.Add(new Control("Chassis Fan", 0));
